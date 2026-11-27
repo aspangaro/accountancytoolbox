@@ -511,6 +511,24 @@ class modAccountancyToolbox extends DolibarrModules
 		);
 		$r++;
 
+		// Revision (plan de révision : modèles de guide, cycles A à I et diligences)
+		$this->menu[$r] = array(
+			'fk_menu'  => 'fk_mainmenu=accountancy',
+			'type'     => 'left',
+			'titre'    => 'Plan de révision',
+			'prefix'   => img_picto('', 'fa-tasks', 'class="paddingright pictofixedwidth"'),
+			'mainmenu' => 'accountancy',
+			'leftmenu' => 'accountancytoolbox_revision',
+			'url'      => '/accountancytoolbox/revision/revision.php',
+			'langs'    => 'accountancytoolbox@accountancytoolbox',
+			'position' => 1000 + $r,
+			'enabled'  => 'isModEnabled("accounting") && isModEnabled("accountancytoolbox")',
+			'perms'    => '$user->hasRight("accounting", "mouvements", "lire")',
+			'target'   => '',
+			'user'     => 0,
+		);
+		$r++;
+
 		// Aged balance
 		$this->menu[$r] = array(
 			'fk_menu'   => 'fk_mainmenu=billing,fk_leftmenu=customers_bills',
